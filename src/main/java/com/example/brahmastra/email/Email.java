@@ -12,12 +12,12 @@ public class Email {
     private String to;
     private String head = "Thanks For Dealing with us";
     private String otp;
-    private String head2 = "Verify your new Smart Parceling account";
+    private String head2 = "Verify your new Brahmastra account";
     private String msg1 = "To verify your email address, please use the following One Time Password (OTP):\n" +
             "\n" +
             otp + "\n" +
             "\n" +
-            "Do not share this OTP with anyone." + "\nSmart Parceling takes your account security very seriously. Smart Parceling Customer Service will never ask you to disclose or verify your Smart Parceling password, OTP, credit card, or banking account number. If you receive a suspicious email with a link to update your account information, do not click on the link—instead, report the email to Smart Parceling for investigation.\n" +
+            "Do not share this OTP with anyone." + "\nBrahmastra takes your account security very seriously. Brahmastra Customer Service will never ask you to disclose or verify your Brahmastra password, OTP, credit card, or banking account number. If you receive a suspicious email with a link to update your account information, do not click on the link—instead, report the email to Brahmastra for investigation.\n" +
             "\n" +
             "Thank you!\n" +
             "\n";
@@ -90,7 +90,7 @@ public class Email {
                 "\n" +
                 otp + "\n" +
                 "\n" +
-                "Do not share this OTP with anyone." + "\nSmart Parceling takes your account security very seriously. Smart Parceling Customer Service will never ask you to disclose or verify your Smart Parceling password, OTP, credit card, or banking account number. If you receive a suspicious email with a link to update your account information, do not click on the link—instead, report the email to Smart Parceling for investigation.\n" +
+                "Do not share this OTP with anyone." + "\nBrahmastra takes your account security very seriously. Brahmastra Customer Service will never ask you to disclose or verify your Brahmastra password, OTP, credit card, or banking account number. If you receive a suspicious email with a link to update your account information, do not click on the link—instead, report the email to Brahmastra for investigation.\n" +
                 "\n" +
                 "Thank you!\n" +
                 "\n";
