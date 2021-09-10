@@ -7,5 +7,10 @@
 
 package com.example.brahmastra.repository;
 
-public interface ClientRepository {
+import com.example.brahmastra.entity.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client,Integer> {
+
+    public Client findClientByUsername(String username);
 }

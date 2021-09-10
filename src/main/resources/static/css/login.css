@@ -14,7 +14,7 @@
     height: 480px;
     position: relative;
     margin: 10rem auto;
-    background: white;
+    background: transparent;
     padding: 5px;
 }
 
@@ -25,9 +25,11 @@
     position: relative;
     box-shadow: 0 0 20px 9px maroon;
     border-radius: 30px;
+    color: white;
 }
 
 .toggle-btn {
+    color: white;
     padding: 10px 30px;
     cursor: pointer;
     background: transparent;
@@ -47,22 +49,8 @@
     transition: 0.5s;
 }
 
-.social-media {
-    margin: 30px auto;
-    text-align: center;
-}
-
-.social-media img {
-    width: 6vh;
-    margin: 0 3vh;
-    box-shadow: 0 0 2vh 0 grey;
-    cursor: pointer;
-    height: 6vh;
-    border-radius: 50%;
-}
 
 .input-grp {
-    top: 30vh;
     position: absolute;
     width: 50vh;
     transition: 0.5s;
@@ -79,6 +67,7 @@
     border-bottom: 1vh solid gray;
     outline: none;
     background: transparent;
+    color: white;
 }
 
 .submit-btn {
