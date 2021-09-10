@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="Head::frag(${title})">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="sidebar" th:fragment="side">
+
+    <i onclick="toggle()" class="fas fa-times cross"></i>
+    <h4></h4>
+    <a href="#" th:href="@{/}" th:classappend="${title}=='Brahmastra' ? 'present' : ''"> <i
+            class="fas fa-tachometer-alt"></i> HOME</a>
+    <a href="#" th:href="@{/project}" th:classappend="${title}=='Projects' ? 'present' : ''"> <i
+            class="fas fa-server"></i> PROJECTS</a>
+    <a href="#" th:href="@{/pricing}" th:classappend="${title}=='Pricing' ? 'present' : ''"> <i
+            class="fas fa-tags"></i> PRICING</a>
+    <a href="#" th:href="@{/user/cart}" th:classappend="${title}=='Cart' ? 'present' : ''"> <i
+            class="fab fa-opencart"></i> CART</a>
+    <a href="#" th:href="@{/login}" th:classappend="${title}=='Login' ? 'present' : ''"> <i
+            class="fas fa-sign-in-alt"></i> LOGIN</a>
+    <a href="#" th:href="@{/logout}" class="bottom"> <i class="fas fa-sign-out-alt"></i> LOG OUT</a>
+</div>
+</body>
+</html>

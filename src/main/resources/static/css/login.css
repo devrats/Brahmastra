@@ -1,0 +1,119 @@
+.account-bg {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../media/fotis-fotopoulos-SyvsTmuuZyM-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box {
+    opacity: 0.8;
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 10rem auto;
+    background: white;
+    padding: 5px;
+}
+
+.button-box {
+    width: 15.22rem;
+    height: 6vh;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px maroon;
+    border-radius: 30px;
+}
+
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: black;
+    outline: none;
+    position: relative;
+}
+
+.btn2 {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 125px;
+    height: 100%;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.social-media {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.social-media img {
+    width: 6vh;
+    margin: 0 3vh;
+    box-shadow: 0 0 2vh 0 grey;
+    cursor: pointer;
+    height: 6vh;
+    border-radius: 50%;
+}
+
+.input-grp {
+    top: 30vh;
+    position: absolute;
+    width: 50vh;
+    transition: 0.5s;
+}
+
+.input-field {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+    border-left: black;
+    border-top: black;
+    border-right: black;
+    border-bottom: 1vh solid gray;
+    outline: none;
+    background: transparent;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 2vh 5vh;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: black;
+    outline: none;
+    border-radius: 5vh;
+}
+
+.check-box {
+    margin: 5vh 2vh 5vh ;
+    border: black;
+
+}
+
+.input-grp1 {
+    position: absolute;
+    width: 50vh;
+    transition: 0.5s;
+    display: none;
+}
+
+.btn1 {
+    top: 0;
+    left: 120px;
+    position: absolute;
+    width: 125px;
+    height: 100%;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
