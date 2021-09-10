@@ -24,6 +24,15 @@ public class Client {
     private String password;
     private String mobile;
     private String role;
+    private boolean mail;
+
+    public boolean isMail() {
+        return mail;
+    }
+
+    public void setMail(boolean mail) {
+        this.mail = mail;
+    }
 
     public String getRole() {
         return role;

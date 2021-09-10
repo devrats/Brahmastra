@@ -29,6 +29,7 @@ public class UserController {
     public String register(@ModelAttribute Client client){
         client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
         client.setRole("ROLE_USER");
+        client.setMail(false);
         clientRepository.save(client);
         return "login";
     }
