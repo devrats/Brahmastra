@@ -8,6 +8,7 @@
 package com.example.brahmastra.controller;
 
 
+import com.example.brahmastra.entity.Client;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,10 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login(Model model){
+        model.addAttribute("client",new Client());
+        model.addAttribute("userAvailable",false);
+        model.addAttribute("showregister","false");
         return "login";
     }
 }

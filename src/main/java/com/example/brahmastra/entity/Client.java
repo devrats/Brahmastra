@@ -11,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
@@ -20,11 +23,25 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank(message = "Email cannot be blank")
     private String username;
+    @NotBlank(message = "Password Cannot be blank")
+    @Size(min = 8, message = "Password must be greater then 8 character")
     private String password;
+    @NotBlank
     private String mobile;
     private String role;
     private boolean mail;
+    @AssertTrue(message = "Please agree to terms and condition")
+    private boolean agree;
+
+    public boolean isAgree() {
+        return agree;
+    }
+
+    public void setAgree(boolean agree) {
+        this.agree = agree;
+    }
 
     public boolean isMail() {
         return mail;

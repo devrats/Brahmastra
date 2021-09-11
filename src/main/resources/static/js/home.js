@@ -118,7 +118,6 @@ const login = () =>{
         $(".btn-c").addClass("btn2")
         $(".btn-c").removeClass("btn1")
     } else {
-        console.log("hello")
         $(".input-grp1").css("display","block")
         $(".input-grp").css("display","none")
         $(".btn-c").addClass("btn1")
@@ -126,3 +125,13 @@ const login = () =>{
     }
 }
 
+const showWhat = () =>{
+    console.log($("#show").val())
+    if($("#show").val()=='true'){
+        console.log("hello")
+        $(".input-grp1").css("display","block")
+        $(".input-grp").css("display","none")
+        $(".btn-c").addClass("btn1")
+        $(".btn-c").removeClass("btn2")
+    }
+}

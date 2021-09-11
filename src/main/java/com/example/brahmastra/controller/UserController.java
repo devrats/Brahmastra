@@ -13,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -26,11 +29,23 @@ public class UserController {
     private ClientRepository clientRepository;
 
     @RequestMapping("/register")
-    public String register(@ModelAttribute Client client){
-        client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
-        client.setRole("ROLE_USER");
-        client.setMail(false);
-        clientRepository.save(client);
-        return "login";
+    public String register(Model model, @ModelAttribute @Valid Client client, BindingResult bindingResult){
+        model.addAttribute("userAvailable",false);
+        if(bindingResult.hasErrors()){
+            model.addAttribute("client",client);
+            model.addAttribute("showregister",true);
+            return "login";
+        } else if(!(clientRepository.findClientByUsername(client.getUsername()) ==null)){
+            model.addAttribute("client",client);
+            model.addAttribute("userAvailable",true);
+            model.addAttribute("showregister","true");
+            return "login";
+        } else{
+            client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
+            client.setRole("ROLE_USER");
+            client.setMail(false);
+            clientRepository.save(client);
+            return "login";
+        }
     }
 }

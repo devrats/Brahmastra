@@ -57,9 +57,7 @@
 }
 
 .input-field {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
+    margin-top: 0.5rem;
     width: 100%;
     border-left: black;
     border-top: black;
@@ -74,12 +72,13 @@
     width: 85%;
     padding: 2vh 5vh;
     cursor: pointer;
-    display: block;
     margin: auto;
+    display: block;
     background: linear-gradient(to right, #ff105f, #ffad06);
     border: black;
     outline: none;
     border-radius: 5vh;
+    margin-top: 2rem;
 }
 
 .check-box {

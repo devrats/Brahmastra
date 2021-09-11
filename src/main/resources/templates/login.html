@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
+<body onload="showWhat()">
 <div th:replace="navbar::nav"></div>
 <div class="account-bg">
     <div class="form-box">
@@ -17,7 +17,10 @@
                 Register
             </button>
         </div>
-        <form id="login" class="input-grp" th:action="@{/login}" method="post">
+        <form id="login" class="input-grp" th:action="@{/login}" method="post" th:object="${client}">
+            <div th:if="${param.error}" class="text-danger alert alert-danger">Invalid username or password</div>
+            <div th:if="${param.logout}" class="text-success alert alert-success">You are successfully logged out
+            </div>
             <input
                     type="text"
                     class="input-field"
@@ -34,30 +37,34 @@
             />
             <button type="submit" class="submit-btn">Log In</button>
         </form>
-        <form id="login1" class="input-grp1" th:action="@{/register}" method="post">
+        <form id="login1" class="input-grp1" th:action="@{/register}" method="post" th:object="${client}">
+            <input type="text" id="show" style="display: none" th:value="${showregister}">
             <input
                     type="text"
                     class="input-field"
                     name="mobile"
-                    placeholder="Mobile"
-                    required
-            />
+                    th:value="${client.mobile}" placeholder="Mobile"
+                    th:classappend="${#fields.hasErrors('mobile')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:each="e:${#fields.errors('mobile')}" th:text="${e}"></div>
             <input
-                    type="text"
+                    type="email"
                     class="input-field"
                     name="username"
-                    placeholder="Email Address"
-                    required
-            />
+                    th:value="${client.username}" placeholder="Email"
+                    th:classappend="${#fields.hasErrors('username')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:each="e:${#fields.errors('username')}" th:text="${e}"></div>
+            <div class="text-danger" th:if="${userAvailable}">Email is already registered</div>
             <input
                     class="input-field"
                     placeholder="Password"
-                    name="password"
-                    required
                     type="password"
-            />
+                    th:value="${client.password}" name="Password"
+                    th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:each="e:${#fields.errors('password')}" th:text="${e}"></div>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="agree"
+                       th:classappend="${#fields.hasErrors('agree')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:each="e:${#fields.errors('agree')}" th:text="${e}"></div>
                 <label class="form-check-label" style="color: white" for="exampleCheck1">Agree Term and condition</label>
             </div>
             <button type="submit"  class="submit-btn">Register</button>
