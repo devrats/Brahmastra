@@ -10,6 +10,26 @@
 <div th:replace="sidebar::side"></div>
 <i class="fas fa-bars bar" onclick="toggleBar()"></i>
 <section class="dashboard_banner" id="banneres">
+    <div class="card" style="margin-top: 100px" th:each="e : ${projects}">
+        <div class="card-header">
+            <h2 class="project-name"><span ></span></h2>
+        </div>
+        <div class="card-body" style="text-align: left">
+            <span class="item-head"> Project Type: &nbsp; </span> <span class="project-type-detail"> Android with core java</span> <br>
+            <br>
+            <span class="item-head"> Highlights: </span> <br>
+            <span class="project-type-detail">
+            <pre style="font-family: 'Times New Roman'; font-size: 1.3vw">
+  •Android app with core java and firebase implementation
+  •Give an interface to user to find nearby parking and book the slot at that parking.
+  •Give an interface to parking lot owners to manage their parking more effectively.
+            </pre>
+                </span>
+            <span class="item-head">Price: </span> <span class="item-amount"> 2999
+        </span> <span class="item-cut"> <del>5999</del></span> <span class="item-discount"> 18% off</span>
+            <a href="#" style="float: right;" class="btn btn-outline-danger btn-warning bot">Buy</a>
+        </div>
+    </div>
     <div th:replace="about::about"></div>
 </section>
 </body>

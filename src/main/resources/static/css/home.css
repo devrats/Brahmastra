@@ -107,6 +107,9 @@ a {
 
 .bot {
     color: black;
+    width: 9vw;
+    height: 2vw;
+    padding: 0;
 }
 
 .second-nav{
@@ -126,4 +129,37 @@ a {
 
 .verification-card{
     top: 20vh;
+}
+
+.logo{
+    height: 3vw;
+    width: 12vw;
+}
+
+.project-name{
+    font-style: italic;
+    color: orange;
+    font-family: "Times New Roman";
+}
+
+.item-cut{
+    font-size: 12px;
+}
+
+.item-head{
+    color: darkviolet;
+    font-size: 22px;
+}
+
+.item-discount{
+    color: #ff105f;
+    font-size: 15px;
+}
+
+.project-type-detail{
+    color: brown;
+}
+
+.card{
+    width: 108%;
 }
