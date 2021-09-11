@@ -167,3 +167,32 @@ a {
 .button-buy{
     width: 24vw;
 }
+
+.about-us{
+    display: inline-flex;
+}
+
+.content{
+    overflow: hidden;
+    width: 45%;
+    height: auto;
+    padding-top: 50px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+.actual-pic{
+    height: 35rem;
+    width: 80%;
+    /*margin-left: 10rem;*/
+    border-radius: 50%;
+}
+
+.about-us{
+    margin-top: 100px;
+}
+
+.about-us-heading{
+    color: orange;
+}
