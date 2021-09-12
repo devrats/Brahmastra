@@ -136,4 +136,23 @@ const showWhat = () =>{
     }
 }
 
+const starting = () => {
+    if (isMobile) {
+        $(".sidebar").css("display", "none")
+        $(".bar").css("display", "block")
+        $(".dashboard_banner").css("padding-left", "0px")
+        let spans = document.getElementsByTagName("link")[2]
+        spans.remove()
+        $('.table').dataTable({
+            "order": []
+        });
+    } else {
+        $(".sidebar").css("display", "none")
+        $(".bar").css("display", "block")
+        $(".dashboard_banner").css("padding-left", "0px")
+        document.getElementById("banneres").className = "dashboard_banner container text-center"
+        let spans = document.getElementsByTagName("link")[1]
+        spans.remove()
+    }
+}
 

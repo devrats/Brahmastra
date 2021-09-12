@@ -29,6 +29,8 @@ public class ServiceController {
             return "redirect:/user/email";
         } else {
             model.addAttribute("name",clientByUsername);
+            model.addAttribute("title","Brahmastra");
+            model.addAttribute("loginAvailable",true);
             return "home";
         }
     }

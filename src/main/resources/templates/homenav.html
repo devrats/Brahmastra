@@ -26,11 +26,11 @@
                         <a class="nav-link sec-nav" th:classappend="${title}=='Cart' ? 'active' : ''" href="#"
                            th:href="@{/user/cart}">CART</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" th:if="${!loginAvailable}">
                         <a class="nav-link sec-nav" th:classappend="${title}=='Login' ? 'active' : ''" href="#"
                            th:href="@{/user/home}">LOGIN</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" th:if="${loginAvailable}">
                         <a class="nav-link sec-nav" th:classappend="${title}=='' ? 'active' : ''" href="#"
                            th:href="@{/logout}">LOGOUT</a>
                     </li>
