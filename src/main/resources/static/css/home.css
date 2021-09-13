@@ -12,6 +12,10 @@
     text-shadow: blue;
 }
 
+.navbar-home{
+    position: sticky;
+}
+
 body {
     background-color: #e2e2e2;
 }
@@ -173,6 +177,7 @@ a {
 }
 
 .content{
+    animation: slider 2s ease-in;
     overflow: hidden;
     width: 45%;
     height: auto;
@@ -180,7 +185,7 @@ a {
     font-family: "Times New Roman";
     font-style: italic;
     font-weight: bold;
-    font-size: 1.3vw;
+    font-size: 20px;
 }
 .actual-pic{
     height: 30rem;
@@ -195,4 +200,13 @@ a {
 
 .about-us-heading{
     color: orange;
+}
+
+@keyframes slider {
+    0%{
+        transform: translateX(-500px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
 }

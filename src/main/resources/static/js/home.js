@@ -1,5 +1,6 @@
 let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+
 const start2 = () => {
     if (isMobile) {
         let spans = document.getElementsByTagName("link")[2]
@@ -155,4 +156,3 @@ const starting = () => {
         spans.remove()
     }
 }
-
