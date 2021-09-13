@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head::frag(${title})">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="start()">
+<div th:replace="navbar::nav"></div>
+<div th:replace="homenav::nav1"></div>
+<div th:replace="sidebar::side"></div>
+<i class="fas fa-bars bar" onclick="toggleBar()"></i>
+<section class="dashboard_banner" id="banneres">
+    <div class="cart-total total-padder">
+        <table class="table text-center">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Type</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Smart Parking</td>
+                <td>Android</td>
+                <td>2999<span style="font-size: 20px">*</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            <span>Sub Total</span>
+            <span>50</span>
+        </p>
+        <p>
+            <span>Discount</span>
+            <span>-10</span>
+        </p>
+        <p>
+            <span>Tax (18%)</span>
+            <span>9</span>
+        </p>
+        <p>
+            <span>Delivery Charge</span>
+            <span>0</span>
+        </p>
+        <p>
+            <span>Total</span>
+            <span>49</span>
+        </p>
+        <p>
+            <span>You Saved</span>
+            <span>10</span>
+        </p>
+        <input type="button" class="bot pay-bot btn-outline-warning btn btn-primary" onclick="payment()" value="Pay">
+    </div>
+    <div th:replace="about::about"></div>
+</section>
+</body>
+</html>

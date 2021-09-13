@@ -156,3 +156,88 @@ const starting = () => {
         spans.remove()
     }
 }
+
+const payment = () => {
+    let amount = 500
+    $.ajax(
+        {
+            url: '/user/pay',
+            data: JSON.stringify({amount: amount}),
+            contentType: 'application/json',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                if (response.status == "created") {
+                    let options = {
+                        "key": "rzp_test_4sgOUR0hFBHwtn",
+                        "amount": response.amount,
+                        "currency": "INR",
+                        "name": "Devvrat",
+                        "description": "Recharge your account with Pika coins",
+                        "order_id": response.id,
+                        "handler": function (response) {
+                            //alert(response.razorpay_payment_id);
+                            //alert(response.razorpay_order_id);
+                            //alert(response.razorpay_signature)
+                            paymentSuccess(response.razorpay_payment_id, response.razorpay_order_id, "success")
+                        },
+                        "prefill": {
+                            "name": "",
+                            "email": "",
+                            "contact": ""
+                        },
+                        "notes": {
+                            "address": "137/A balaji puram, agra"
+
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+                    let rzp1 = new Razorpay(options);
+                    rzp1.on('payment.failed', function (response) {
+                        alert(response.error.code);
+                        alert(response.error.description);
+                        alert(response.error.source);
+                        alert(response.error.step);
+                        alert(response.error.reason);
+                        alert(response.error.metadata.order_id);
+                        alert(response.error.metadata.payment_id);
+                    });
+                    rzp1.open();
+
+                }
+            }
+        }
+    )
+};
+
+function paymentSuccess(razorpay_payment_id, razorpay_order_id, paid) {
+    $.ajax(
+        {
+            url: '/user/paySuccess',
+            data: JSON.stringify({
+                "razorpay_payment_id": razorpay_payment_id
+                , "razorpay_order_id": razorpay_order_id, "status": paid
+            }),
+            contentType: 'application/json',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                swal.fire(
+                    'Good job!',
+                    'payment successful',
+                    'success'
+                )
+            },
+            error: function (error) {
+                console.log(error)
+                swal.fire(
+                    'error',
+                    'payment successful but take some time to complete',
+                    'error'
+                )
+            }
+        }
+    )
+}

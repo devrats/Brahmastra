@@ -73,6 +73,13 @@ public class HomeController {
         return "pricing";
     }
 
+    @RequestMapping("/user/finalBill")
+    public String finalBill(Model model){
+        model.addAttribute("title","Bill");
+        model.addAttribute("loginAvailable",true);
+        return "bill";
+    }
+
     @RequestMapping("/user/cart")
     public String cart(Model model){
         model.addAttribute("title","Cart");

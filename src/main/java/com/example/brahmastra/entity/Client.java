@@ -7,13 +7,11 @@
 
 package com.example.brahmastra.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -34,6 +32,16 @@ public class Client {
     private boolean mail;
     @AssertTrue(message = "Please agree to terms and condition")
     private boolean agree;
+    @OneToMany(mappedBy = "client")
+    private List<Payment> payment;
+
+    public List<Payment> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(List<Payment> payment) {
+        this.payment = payment;
+    }
 
     public boolean isAgree() {
         return agree;

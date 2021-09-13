@@ -10,100 +10,102 @@
 <div th:replace="sidebar::side"></div>
 <i class="fas fa-bars bar" onclick="toggleBar()"></i>
 <section class="dashboard_banner" id="banneres">
-    <div class="row100">
-        <div class="col-75">
-            <div class="container3">
-                <form>
-                    <div class="row100">
-                        <div class="col-58">
-                            <h2 class="heading">Billing Address</h2>
-                            <br>
-                            <label class="label1" for="fname"
-                            ><i class="fa fa-user"></i> Full Name</label
-                            >
-                            <input
-                                    class="input1"
-                                    type="text"
-                                    id="fname"
-                                    name="firstname"
-                                    placeholder="John M. Done"
-                                    required
-                            />
 
-                            <label class="label1" for="email"
-                            ><i class="fa fa-envelope"></i> Email</label
-                            >
-                            <input
-                                    class="input1"
-                                    type="text"
-                                    id="email"
-                                    name="email"
-                                    placeholder="john@example.com"
-                                    required
-                            />
+        <div class="row100">
+            <div class="col-75">
+                <div class="container3">
+                    <form action="#" th:action="@{/user/finalBill}">
+                        <div class="row100">
+                            <div class="col-58">
+                                <h2 class="heading">Billing Address</h2>
+                                <br>
+                                <label class="label1" for="fname"
+                                ><i class="fa fa-user"></i> Full Name</label
+                                >
+                                <input
+                                        class="input1"
+                                        type="text"
+                                        id="fname"
+                                        name="firstname"
+                                        placeholder="John M. Done"
+                                        required
+                                />
 
-                            <label class="label1" for="adr"
-                            ><i class="far fa-address-card"></i> Address</label
-                            >
-                            <input
-                                    class="input1"
-                                    type="text"
-                                    id="adr"
-                                    name="address"
-                                    placeholder="452 W. 15th Street"
-                                    required
-                            />
+                                <label class="label1" for="email"
+                                ><i class="fa fa-envelope"></i> Email</label
+                                >
+                                <input
+                                        class="input1"
+                                        type="text"
+                                        id="email"
+                                        name="email"
+                                        placeholder="john@example.com"
+                                        required
+                                />
 
-                            <label class="label1" for="city"
-                            ><i class="fa fa-institution"></i> City</label
-                            >
-                            <input
-                                    class="input1"
-                                    type="text"
-                                    id="city"
-                                    name="city"
-                                    placeholder="Lisbon"
-                                    required
-                            />
+                                <label class="label1" for="adr"
+                                ><i class="far fa-address-card"></i> Address</label
+                                >
+                                <input
+                                        class="input1"
+                                        type="text"
+                                        id="adr"
+                                        name="address"
+                                        placeholder="452 W. 15th Street"
+                                        required
+                                />
 
-                            <div class="row100">
-                                <div class="col-50">
-                                    <label class="label1" for="state">
-                                        <i class="fas fa-location"></i> State</label>
-                                    <input
-                                            class="input1"
-                                            type="text"
-                                            id="state"
-                                            name="state"
-                                            placeholder="Phnom Penh"
-                                            required
-                                    />
-                                </div>
-                                <div class="col-50">
-                                    <label class="label1" for="zip">
-                                        <i class="fas fa-location-arrow"></i> Pin</label>
-                                    <input
-                                            class="input1"
-                                            type="text"
-                                            id="zip"
-                                            name="zip"
-                                            placeholder="120000"
-                                            required
-                                    />
+                                <label class="label1" for="city"
+                                ><i class="fa fa-institution"></i> City</label
+                                >
+                                <input
+                                        class="input1"
+                                        type="text"
+                                        id="city"
+                                        name="city"
+                                        placeholder="Lisbon"
+                                        required
+                                />
+
+                                <div class="row100">
+                                    <div class="col-50">
+                                        <label class="label1" for="state">
+                                            <i class="fas fa-location"></i> State</label>
+                                        <input
+                                                class="input1"
+                                                type="text"
+                                                id="state"
+                                                name="state"
+                                                placeholder="Phnom Penh"
+                                                required
+                                        />
+                                    </div>
+                                    <div class="col-50">
+                                        <label class="label1" for="zip">
+                                            <i class="fas fa-location-arrow"></i> Pin</label>
+                                        <input
+                                                class="input1"
+                                                type="text"
+                                                id="zip"
+                                                name="zip"
+                                                placeholder="120000"
+                                                required
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <label class="label1">
-                        <input
-                                type="checkbox"
-                                checked="checked"
-                                name="sameadr"
-                        />
-                        Shipping address same as billing
-                    </label>
-                    <input type="submit" value="Continue to checkout" class="btn100"/>
-                </form>
+                        <label class="label1">
+                            <input
+                                    type="checkbox"
+                                    checked="checked"
+                                    name="sameadr"
+                            />
+                            Shipping address same as billing
+                        </label>
+                        <input type="submit" value="Continue to checkout" class="btn100"/>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

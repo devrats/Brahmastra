@@ -177,7 +177,7 @@ a {
 }
 
 .content{
-    animation: slider 2s ease-in;
+    animation: slider 1.2s ease-in;
     overflow: hidden;
     width: 45%;
     height: auto;
@@ -209,4 +209,8 @@ a {
     100%{
         transform: translateX(0px);
     }
+}
+
+.pay-bot{
+    width: 50%;
 }
