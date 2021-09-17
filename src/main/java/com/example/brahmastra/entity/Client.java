@@ -34,6 +34,8 @@ public class Client {
     private boolean agree;
     @OneToMany(mappedBy = "client")
     private List<Payment> payment;
+    @OneToMany(mappedBy = "client")
+    private List<Project> projects;
 
     public List<Payment> getPayment() {
         return payment;

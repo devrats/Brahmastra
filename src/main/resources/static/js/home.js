@@ -158,7 +158,7 @@ const starting = () => {
 }
 
 const payment = () => {
-    let amount = 500
+    let amount = $("#paid").val()
     $.ajax(
         {
             url: '/user/pay',

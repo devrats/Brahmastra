@@ -7,14 +7,14 @@
 
 package com.example.brahmastra.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class Project {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String highlights;
@@ -22,6 +22,45 @@ public class Project {
     private String type;
     private int discount;
     private float discountPercentage;
+    private float total;
+    private float tax;
+    @ManyToOne
+    private Client client;
+
+    public Project(String name, String highlights, int price, String type, int discount, float discountPercentage, float total, float tax) {
+        this.name = name;
+        this.highlights = highlights;
+        this.price = price;
+        this.type = type;
+        this.discount = discount;
+        this.discountPercentage = discountPercentage;
+        this.total = total;
+        this.tax = tax;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public float getTax() {
+        return tax;
+    }
+
+    public void setTax(float tax) {
+        this.tax = tax;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
 
     public int getDiscount() {
         return discount;

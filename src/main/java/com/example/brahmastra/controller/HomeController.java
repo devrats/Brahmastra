@@ -14,6 +14,7 @@ import com.example.brahmastra.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -27,6 +28,9 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(Model model, Principal principal){
+        Project project = new Project("Smart Parking","  •Very good\n  •Bht achha", 15000,"web",
+                12999,10,15000,18);
+        projectRepository.save(project);
         model.addAttribute("title","Brahmastra");
         model.addAttribute("loginAvailable",false);
         if(!(principal==null)){
@@ -73,8 +77,10 @@ public class HomeController {
         return "pricing";
     }
 
-    @RequestMapping("/user/finalBill")
-    public String finalBill(Model model){
+    @RequestMapping("/user/finalBill/{id}")
+    public String finalBill(@PathVariable("id") int id, Model model){
+        Project projectById = projectRepository.findProjectById(id);
+        model.addAttribute("project",projectById);
         model.addAttribute("title","Bill");
         model.addAttribute("loginAvailable",true);
         return "bill";
@@ -87,8 +93,9 @@ public class HomeController {
         return "cart";
     }
 
-    @RequestMapping("/user/checkout")
-    public String billing(Model model){
+    @RequestMapping("/user/checkout/{id}")
+    public String billing(@PathVariable("id") int id, Model model){
+        model.addAttribute("id",id);
         model.addAttribute("title","Billing");
         model.addAttribute("loginAvailable",true);
         return "checkout";

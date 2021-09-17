@@ -23,23 +23,23 @@
             <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Smart Parking</td>
-                <td>Android</td>
-                <td>2999<span style="font-size: 20px">*</span></td>
+                <td th:text="${project.name}"></td>
+                <td th:text="${project.type}"></td>
+                <td th:text="${project.discount}"><span style="font-size: 20px">*</span></td>
             </tr>
             </tbody>
         </table>
         <p>
             <span>Sub Total</span>
-            <span>50</span>
+            <span th:text="${project.price}"></span>
         </p>
         <p>
             <span>Discount</span>
-            <span>-10</span>
+            <span th:text="${project.discountPercentage}"></span>
         </p>
         <p>
             <span>Tax (18%)</span>
-            <span>9</span>
+            <span th:text="${project.tax}"></span>
         </p>
         <p>
             <span>Delivery Charge</span>
@@ -47,11 +47,12 @@
         </p>
         <p>
             <span>Total</span>
-            <span>49</span>
+            <span th:text="${project.total}"></span>
+            <input type="text" hidden th:value="${project.total}" id="paid">
         </p>
         <p>
             <span>You Saved</span>
-            <span>10</span>
+            <span th:text="${project.discountPercentage}">%</span>
         </p>
         <input type="button" class="bot pay-bot btn-outline-warning btn btn-primary" onclick="payment()" value="Pay">
     </div>
