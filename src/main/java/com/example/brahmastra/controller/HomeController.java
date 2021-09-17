@@ -9,7 +9,9 @@ package com.example.brahmastra.controller;
 
 
 import com.example.brahmastra.entity.Client;
+import com.example.brahmastra.entity.Pricing;
 import com.example.brahmastra.entity.Project;
+import com.example.brahmastra.repository.PricingRepository;
 import com.example.brahmastra.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,12 +27,14 @@ public class HomeController {
 
     @Autowired
     private ProjectRepository projectRepository;
+    @Autowired
+    private PricingRepository pricingRepository;
 
     @RequestMapping("/")
     public String home(Model model, Principal principal){
-        Project project = new Project("Smart Parking","  •Very good\n  •Bht achha", 15000,"web",
+        Pricing project = new Pricing("Smart Parking","  •Very good\n  •Bht achha", 15000,"web",
                 12999,10,15000,18);
-        projectRepository.save(project);
+        pricingRepository.save(project);
         model.addAttribute("title","Brahmastra");
         model.addAttribute("loginAvailable",false);
         if(!(principal==null)){
@@ -53,6 +57,8 @@ public class HomeController {
 
     @RequestMapping("/pricing")
     public String pricing(Model model, Principal principal){
+        List<Pricing> all = pricingRepository.findAll();
+        model.addAttribute("pricing",all);
         model.addAttribute("title","Pricing");
         model.addAttribute("loginAvailable",false);
         if(!(principal==null)){
@@ -72,18 +78,26 @@ public class HomeController {
 
     @RequestMapping("/user/pricing")
     public String userPricing(Model model){
+        List<Pricing> all = pricingRepository.findAll();
+        model.addAttribute("pricing",all);
         model.addAttribute("title","Pricing");
         model.addAttribute("loginAvailable",true);
         return "pricing";
     }
 
-    @RequestMapping("/user/finalBill/{id}")
-    public String finalBill(@PathVariable("id") int id, Model model){
-        Project projectById = projectRepository.findProjectById(id);
-        model.addAttribute("project",projectById);
+    @RequestMapping("/user/finalBill/{type}/{id}")
+    public String finalBill(@PathVariable("type") String type, @PathVariable("id") int id, Model model){
         model.addAttribute("title","Bill");
         model.addAttribute("loginAvailable",true);
-        return "bill";
+        if(type.equals("pricing")){
+            Pricing pricingById = pricingRepository.findPricingById(id);
+            model.addAttribute("project",pricingById);
+            return "bill";
+        } else{
+            Project projectById = projectRepository.findProjectById(id);
+            model.addAttribute("project",projectById);
+            return "bill";
+        }
     }
 
     @RequestMapping("/user/cart")
@@ -93,9 +107,10 @@ public class HomeController {
         return "cart";
     }
 
-    @RequestMapping("/user/checkout/{id}")
-    public String billing(@PathVariable("id") int id, Model model){
+    @RequestMapping("/user/checkout/{type}/{id}")
+    public String billing(@PathVariable("type") String type, @PathVariable("id") int id, Model model){
         model.addAttribute("id",id);
+        model.addAttribute("type",type);
         model.addAttribute("title","Billing");
         model.addAttribute("loginAvailable",true);
         return "checkout";

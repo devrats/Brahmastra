@@ -14,7 +14,7 @@
         <div class="row100">
             <div class="col-75">
                 <div class="container3">
-                    <form action="#" method="post" th:action="@{'/user/finalBill/' + ${id}}">
+                    <form action="#" method="post" th:action="@{'/user/finalBill/' + ${type} + '/' + ${id}}">
                         <div class="row100">
                             <div class="col-58">
                                 <h2 class="heading">Billing Address</h2>
