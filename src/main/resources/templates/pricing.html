@@ -15,7 +15,8 @@
             <h2 class="project-name"><span th:text="${e.name}"></span></h2>
         </div>
         <div class="card-body" style="text-align: left">
-            <span class="item-head"> Project Type: &nbsp; </span> <span class="project-type-detail" th:text="${e.type}"> </span> <br>
+            <span class="item-head"> Project Type: &nbsp; </span> <span class="project-type-detail"
+                                                                        th:text="${e.type}"> </span> <br>
             <br>
             <span class="item-head"> Highlights: </span> <br>
             <span class="project-type-detail">
@@ -24,9 +25,11 @@
             </pre>
                 </span>
             <span class="item-head">Price: </span> <span class="item-amount" th:text="${e.discount}">
-        </span> <span class="item-cut"> <del th:text="${e.price}"></del></span> <span class="item-discount" th:text="${e.discountPercentage}"></span>
+        </span> <span class="item-cut"> <del th:text="${e.price}"></del></span> <span class="item-discount"
+                                                                                      th:text="${e.discountPercentage}"></span>
             <span class="item-discount">%off</span>
-            <a href="#" th:href="@{'/user/checkout/pricing/' + ${e.id}}" style="float: right;" class="btn btn-outline-danger btn-warning bot">Buy</a>
+            <a href="#" th:href="@{'/user/checkout/pricing/' + ${e.id}}" style="float: right;"
+               class="btn btn-outline-danger btn-warning bot">Buy</a>
         </div>
     </div>
     <div class="card" style="margin-top: 100px">
@@ -34,7 +37,8 @@
             <h2 class="project-name"><span> Customized Product</span></h2>
         </div>
         <div class="card-body" style="text-align: left">
-            <span class="item-head"> Project Type: &nbsp; </span> <span class="project-type-detail"> Android with core java</span> <br>
+            <span class="item-head"> Project Type: &nbsp; </span> <span
+                class="project-type-detail"> Web with core java</span> <br>
             <br>
             <span class="item-head"> Highlights: </span> <br>
             <span class="project-type-detail">
@@ -44,24 +48,26 @@
   •Give an interface to parking lot owners to manage their parking more effectively.
             </pre>
                 </span>
-            <span class="item-head">Price (per page): </span> <span class="item-amount"> 2999
-        </span> <span class="item-cut"> <del>5999</del></span> <span class="item-discount"> 18% off</span>
-            <br>
-            <label>Number of Page You Want</label>
-            &nbsp;
-            <input placeholder="1" style="width: 5vw" type="number" step="1">
-            <br>
-            <span class="item-head">Price (per functionality): </span> <span class="item-amount"> 2999
-        </span> <span class="item-cut"> <del>5999</del></span> <span class="item-discount"> 18% off</span>
-            <br>
-            <label>Number of Functionality You Want</label>
-            &nbsp;
-            <input placeholder="1" style="width: 5vw" type="number" step="1">
-            <br>
-            <br>
-            <div class="container text-center">
-            <a href="#" th:href="@{/user/checkout}" style="align-items: center" class="btn btn-outline-danger button-buy btn-warning bot">Buy</a>
-            </div>
+            <form action="" method="post" th:action="@{/user/checkout/customProject/}">
+                <span class="item-head">Price (per page): </span> <span class="item-amount"> 249
+        </span> <span class="item-cut"> <del>349</del></span> <span class="item-discount"> 18% off</span> <br>
+                <label>Number of Page You Want</label>
+                &nbsp;
+                <input placeholder="1" name="page" style="width: 5vw" type="number" step="1">
+                <br>
+                <span class="item-head">Price (per functionality): </span> <span class="item-amount"> 349
+        </span> <span class="item-cut"> <del>449</del></span> <span class="item-discount"> 18% off</span>
+                <br>
+                <label>Number of Functionality You Want</label>
+                &nbsp;
+                <input placeholder="1" name="functionality" style="width: 5vw" type="number" step="1">
+                <br>
+                <br>
+                <div class="container text-center">
+                    <input type="submit" style="align-items: center"
+                       class="btn btn-outline-danger button-buy btn-warning bot" value="Buy"/>
+                </div>
+            </form>
         </div>
     </div>
     <div th:replace="about::about"></div>

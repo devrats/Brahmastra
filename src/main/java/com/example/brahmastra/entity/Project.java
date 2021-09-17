@@ -22,6 +22,14 @@ public class Project {
     private String type;
     private int discount;
     private float discountPercentage;
+
+    public Project(String name, String highlights, String type, float discountPercentage) {
+        this.name = name;
+        this.highlights = highlights;
+        this.type = type;
+        this.discountPercentage = discountPercentage;
+    }
+
     private float total;
     private float tax;
     @ManyToOne

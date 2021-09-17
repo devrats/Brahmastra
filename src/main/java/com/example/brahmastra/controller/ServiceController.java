@@ -9,19 +9,20 @@ package com.example.brahmastra.controller;
 
 import com.example.brahmastra.entity.Client;
 import com.example.brahmastra.entity.Payment;
+import com.example.brahmastra.entity.Project;
 import com.example.brahmastra.repository.ClientRepository;
 import com.example.brahmastra.repository.PaymentRepository;
+import com.example.brahmastra.repository.ProjectRepository;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
+import org.hibernate.criterion.ProjectionList;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Date;
@@ -37,6 +38,9 @@ public class ServiceController {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
     @RequestMapping("/user/home")
     public  String userHome(Model model, Principal principal){
         Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
@@ -48,6 +52,27 @@ public class ServiceController {
             model.addAttribute("loginAvailable",true);
             return "home";
         }
+    }
+
+    @RequestMapping("/user/checkout/{type}/")
+    public String customProject(@PathVariable("type") String type,@RequestParam("page") int page,
+                                @RequestParam("functionality") int functionality,  Model model){
+        Project project =  new Project("Customized project","  •Very good\n  •Bht achha","Web",10);
+        int price = page*249 + functionality*349;
+        float tax = 0.18f*price;
+        float discounter = 0.1f*price;
+        int discount = (int) (price-discounter);
+        float total = discount + tax;
+        project.setPrice(price);
+        project.setTax(tax);
+        project.setDiscount(discount);
+        project.setTotal(total);
+        Project save = projectRepository.save(project);
+        model.addAttribute("id",save.getId());
+        model.addAttribute("type",type);
+        model.addAttribute("title","Billing");
+        model.addAttribute("loginAvailable",true);
+        return "checkout";
     }
 
     @RequestMapping("/user/pay")
