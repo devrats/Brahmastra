@@ -7,6 +7,7 @@
 
 package com.example.brahmastra.controller;
 
+import com.example.brahmastra.entity.Address;
 import com.example.brahmastra.entity.Client;
 import com.example.brahmastra.entity.Payment;
 import com.example.brahmastra.entity.Project;
@@ -54,7 +55,7 @@ public class ServiceController {
 
     @RequestMapping("/user/checkout/{type}/")
     public String customProject(@PathVariable("type") String type,@RequestParam("page") int page,
-                                @RequestParam("functionality") int functionality,  Model model){
+                                @RequestParam("functionality") int functionality,  Model model, Principal principal){
         Project project =  new Project("Customized project","  •Very good\n  •Bht achha","Web",10);
         int price = page*249 + functionality*349;
         float tax = 0.18f*price;
@@ -70,6 +71,13 @@ public class ServiceController {
         model.addAttribute("type",type);
         model.addAttribute("title","Billing");
         model.addAttribute("loginAvailable",true);
+        Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
+        model.addAttribute("client",clientByUsername);
+        if(clientByUsername.getAddress()==null){
+            model.addAttribute("address",new Address());
+        }else{
+            model.addAttribute("address",clientByUsername.getAddress());
+        }
         return "checkout";
     }
 

@@ -44,6 +44,7 @@ public class UserController {
             client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
             client.setRole("ROLE_USER");
             client.setMail(false);
+            client.setName(" ");
             clientRepository.save(client);
             return "login";
         }
