@@ -10,6 +10,30 @@
 <div th:replace="sidebar::side"></div>
 <i class="fas fa-bars bar" onclick="toggleBar()"></i>
 <section class="dashboard_banner" id="banneres">
+    <h1 class="request card-1">Your Projects</h1>
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Project Type</th>
+                    <th scope="col">Project Price</th>
+                </tr>
+                </thead>
+                <tbody th:each="e: ${project}">
+                <tr>
+                    <th scope="row" th:text="${e.id}"></th>
+                    <td th:text="${e.name}"></td>
+                    <td th:text="${e.type}"></td>
+                    <td th:text="${e.total}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div th:replace="about::about"></div>
 </section>
 </body>

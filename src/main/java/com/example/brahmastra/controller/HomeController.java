@@ -8,10 +8,7 @@
 package com.example.brahmastra.controller;
 
 
-import com.example.brahmastra.entity.Address;
-import com.example.brahmastra.entity.Client;
-import com.example.brahmastra.entity.Pricing;
-import com.example.brahmastra.entity.Project;
+import com.example.brahmastra.entity.*;
 import com.example.brahmastra.repository.AddressRepository;
 import com.example.brahmastra.repository.ClientRepository;
 import com.example.brahmastra.repository.PricingRepository;
@@ -120,7 +117,10 @@ public class HomeController {
     }
 
     @RequestMapping("/user/cart")
-    public String cart(Model model){
+    public String cart(Model model,Principal principal){
+        Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
+        List<ClientProject> projects = clientByUsername.getProjects();
+        model.addAttribute("project",projects);
         model.addAttribute("title","Cart");
         model.addAttribute("loginAvailable",true);
         return "cart";

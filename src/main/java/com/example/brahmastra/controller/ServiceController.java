@@ -94,6 +94,22 @@ public class ServiceController {
         object.put("receipt", "txn_1234");
         Order order = client.Orders.create(object);
         Client clientHome = clientRepository.findClientByUsername(principal.getName());
+        List<Payment> payment1 = clientHome.getPayment();
+        Payment payment = new Payment(order.get("id"), amount, order.get("receipt"), "created", (Date) order.get("created_at"));
+        payment1.add(payment);
+        payment.setClient(clientHome);
+        paymentRepository.save(payment);
+        clientRepository.save(clientHome);
+        return order.toString();
+    }
+
+    @RequestMapping("/user/paySuccess")
+    @ResponseBody
+    public ResponseEntity<?> paySuccess(@RequestBody Map<String, Object> data, Principal principal) {
+        Payment payment = paymentRepository.findPaymentByPaymentId((String) data.get("razorpay_order_id"));
+        payment.setStatus((String) data.get("status"));
+        payment.setTransactionId((String) data.get("razorpay_payment_id"));
+        Client clientHome = clientRepository.findClientByUsername(principal.getName());
         String type = (String) data.get("type");
         int id = Integer.parseInt((String) data.get("id"));
         if (type.equals("project") || type.equals("customProject")){
@@ -111,21 +127,7 @@ public class ServiceController {
             convert.setClient(clientHome);
             clientProjectRepository.save(convert);
         }
-        List<Payment> payment1 = clientHome.getPayment();
-        Payment payment = new Payment(order.get("id"), amount, order.get("receipt"), "created", (Date) order.get("created_at"));
-        payment1.add(payment);
-        payment.setClient(clientHome);
-        paymentRepository.save(payment);
         clientRepository.save(clientHome);
-        return order.toString();
-    }
-
-    @RequestMapping("/user/paySuccess")
-    @ResponseBody
-    public ResponseEntity<?> paySuccess(@RequestBody Map<String, Object> data, Principal principal) {
-        Payment payment = paymentRepository.findPaymentByPaymentId((String) data.get("razorpay_order_id"));
-        payment.setStatus((String) data.get("status"));
-        payment.setTransactionId((String) data.get("razorpay_payment_id"));
         paymentRepository.save(payment);
         return ResponseEntity.ok(Map.of("msg", "updated"));
     }

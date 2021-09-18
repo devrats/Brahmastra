@@ -161,10 +161,12 @@ const payment = () => {
     let amount = $("#paid").val()
     let id = $("#idea").val()
     let type = $("#type").val()
+    localStorage.setItem("id",id)
+    localStorage.setItem("type",type)
     $.ajax(
         {
             url: '/user/pay',
-            data: JSON.stringify({amount: amount,id:id,type:type}),
+            data: JSON.stringify({amount: amount}),
             contentType: 'application/json',
             type: 'POST',
             dataType: 'json',
@@ -220,7 +222,9 @@ function paymentSuccess(razorpay_payment_id, razorpay_order_id, paid) {
             url: '/user/paySuccess',
             data: JSON.stringify({
                 "razorpay_payment_id": razorpay_payment_id
-                , "razorpay_order_id": razorpay_order_id, "status": paid
+                , "razorpay_order_id": razorpay_order_id, "status": paid,
+                id: localStorage.getItem("id"),
+                type:localStorage.getItem("type")
             }),
             contentType: 'application/json',
             type: 'POST',
