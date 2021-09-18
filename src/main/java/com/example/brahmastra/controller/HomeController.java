@@ -8,14 +8,18 @@
 package com.example.brahmastra.controller;
 
 
+import com.example.brahmastra.entity.Address;
 import com.example.brahmastra.entity.Client;
 import com.example.brahmastra.entity.Pricing;
 import com.example.brahmastra.entity.Project;
+import com.example.brahmastra.repository.AddressRepository;
+import com.example.brahmastra.repository.ClientRepository;
 import com.example.brahmastra.repository.PricingRepository;
 import com.example.brahmastra.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,6 +33,10 @@ public class HomeController {
     private ProjectRepository projectRepository;
     @Autowired
     private PricingRepository pricingRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private AddressRepository addressRepository;
 
     @RequestMapping("/")
     public String home(Model model, Principal principal){
@@ -86,9 +94,18 @@ public class HomeController {
     }
 
     @RequestMapping("/user/finalBill/{type}/{id}")
-    public String finalBill(@PathVariable("type") String type, @PathVariable("id") int id, Model model){
+    public String finalBill( @ModelAttribute Client client, @PathVariable("type") String type, @PathVariable("id") int id,
+                            Model model, Principal principal){
         model.addAttribute("title","Bill");
         model.addAttribute("loginAvailable",true);
+        Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
+        System.out.println(client);
+        Address address = client.getAddress();
+        address.setClient(clientByUsername);
+        clientByUsername.setAddress(address);
+        clientByUsername.setName(client.getName());
+        addressRepository.save(address);
+        clientRepository.save(clientByUsername);
         if(type.equals("pricing")){
             Pricing pricingById = pricingRepository.findPricingById(id);
             model.addAttribute("project",pricingById);
@@ -108,11 +125,19 @@ public class HomeController {
     }
 
     @RequestMapping("/user/checkout/{type}/{id}")
-    public String billing(@PathVariable("type") String type, @PathVariable("id") int id, Model model){
+    public String billing(@PathVariable("type") String type, @PathVariable("id") int id, Model model,
+                          Principal principal){
         model.addAttribute("id",id);
         model.addAttribute("type",type);
         model.addAttribute("title","Billing");
         model.addAttribute("loginAvailable",true);
+        Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
+        model.addAttribute("client",clientByUsername);
+        if(clientByUsername.getAddress()==null){
+            model.addAttribute("address",new Address());
+        }else{
+            model.addAttribute("address",clientByUsername.getAddress());
+        }
         return "checkout";
     }
 
