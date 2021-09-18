@@ -1,8 +1,8 @@
 /*   Created by IntelliJ IDEA.
  *   Author: Devvrat Sharma (devrats)
- *   Date: 11-Sep-21
- *   Time: 10:11 AM
- *   File: Project.java
+ *   Date: 18-Sep-21
+ *   Time: 4:10 PM
+ *   File: ClientProject.java
  */
 
 package com.example.brahmastra.entity;
@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Project {
+public class ClientProject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Project {
     private int discount;
     private float discountPercentage;
 
-    public Project(String name, String highlights, String type, float discountPercentage) {
+    public ClientProject(String name, String highlights, String type, float discountPercentage) {
         this.name = name;
         this.highlights = highlights;
         this.type = type;
@@ -32,8 +32,10 @@ public class Project {
 
     private float total;
     private float tax;
+    @ManyToOne
+    private Client client;
 
-    public Project(String name, String highlights, int price, String type, int discount, float discountPercentage, float total, float tax) {
+    public ClientProject(String name, String highlights, int price, String type, int discount, float discountPercentage, float total, float tax) {
         this.name = name;
         this.highlights = highlights;
         this.price = price;
@@ -42,6 +44,14 @@ public class Project {
         this.discountPercentage = discountPercentage;
         this.total = total;
         this.tax = tax;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public float getTax() {
@@ -100,7 +110,7 @@ public class Project {
         return Objects.hash(getId(), getName(), getHighlights(), getPrice(), getType());
     }
 
-    public Project() {
+    public ClientProject() {
     }
 
     public int getId() {
@@ -143,18 +153,37 @@ public class Project {
         this.type = type;
     }
 
-    public Project(String name, String highlights, int price, String type) {
+    public ClientProject(int id, String name, String highlights, int price, String type) {
+        this.id = id;
         this.name = name;
         this.highlights = highlights;
         this.price = price;
         this.type = type;
     }
 
-    public Project(int id, String name, String highlights, int price, String type) {
-        this.id = id;
-        this.name = name;
-        this.highlights = highlights;
-        this.price = price;
-        this.type = type;
+    public static ClientProject convert(Project project){
+        ClientProject clientProject = new ClientProject();
+        clientProject.setName(project.getName());
+        clientProject.setHighlights(project.getHighlights());
+        clientProject.setPrice(project.getPrice());
+        clientProject.setType(project.getType());
+        clientProject.setDiscount(project.getDiscount());
+        clientProject.setDiscountPercentage(project.getDiscountPercentage());
+        clientProject.setTotal(project.getTotal());
+        clientProject.setTax(project.getTax());
+        return clientProject;
+    }
+
+    public static ClientProject convert(Pricing project){
+        ClientProject clientProject = new ClientProject();
+        clientProject.setName(project.getName());
+        clientProject.setHighlights(project.getHighlights());
+        clientProject.setPrice(project.getPrice());
+        clientProject.setType(project.getType());
+        clientProject.setDiscount(project.getDiscount());
+        clientProject.setDiscountPercentage(project.getDiscountPercentage());
+        clientProject.setTotal(project.getTotal());
+        clientProject.setTax(project.getTax());
+        return clientProject;
     }
 }

@@ -7,13 +7,8 @@
 
 package com.example.brahmastra.controller;
 
-import com.example.brahmastra.entity.Address;
-import com.example.brahmastra.entity.Client;
-import com.example.brahmastra.entity.Payment;
-import com.example.brahmastra.entity.Project;
-import com.example.brahmastra.repository.ClientRepository;
-import com.example.brahmastra.repository.PaymentRepository;
-import com.example.brahmastra.repository.ProjectRepository;
+import com.example.brahmastra.entity.*;
+import com.example.brahmastra.repository.*;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -39,6 +34,12 @@ public class ServiceController {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private ClientProjectRepository clientProjectRepository;
+
+    @Autowired
+    private PricingRepository pricingRepository;
 
     @RequestMapping("/user/home")
     public  String userHome(Model model, Principal principal){
@@ -92,6 +93,23 @@ public class ServiceController {
         object.put("receipt", "txn_1234");
         Order order = client.Orders.create(object);
         Client clientHome = clientRepository.findClientByUsername(principal.getName());
+        String type = (String) data.get("type");
+        int id = (int) data.get("id");
+        if (type.equals("project") || type.equals("customProject")){
+            Project projectById = projectRepository.findProjectById(id);
+            ClientProject convert = ClientProject.convert(projectById);
+            List<ClientProject> projects = clientHome.getProjects();
+            projects.add(convert);
+            convert.setClient(clientHome);
+            clientProjectRepository.save(convert);
+        } else if (type.equals("pricing")){
+            Pricing pricingById = pricingRepository.findPricingById(id);
+            ClientProject convert = ClientProject.convert(pricingById);
+            List<ClientProject> projects = clientHome.getProjects();
+            projects.add(convert);
+            convert.setClient(clientHome);
+            clientProjectRepository.save(convert);
+        }
         List<Payment> payment1 = clientHome.getPayment();
         Payment payment = new Payment(order.get("id"), amount, order.get("receipt"), "created", (Date) order.get("created_at"));
         payment1.add(payment);

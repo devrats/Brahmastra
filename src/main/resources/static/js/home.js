@@ -159,10 +159,12 @@ const starting = () => {
 
 const payment = () => {
     let amount = $("#paid").val()
+    let id = $("#idea").val()
+    let type = $("#type").val()
     $.ajax(
         {
             url: '/user/pay',
-            data: JSON.stringify({amount: amount}),
+            data: JSON.stringify({amount: amount,id:id,type:type}),
             contentType: 'application/json',
             type: 'POST',
             dataType: 'json',

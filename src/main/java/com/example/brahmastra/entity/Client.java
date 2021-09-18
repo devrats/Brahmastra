@@ -41,11 +41,11 @@ public class Client {
         this.name = name;
     }
 
-    public List<Project> getProjects() {
+    public List<ClientProject> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(List<ClientProject> projects) {
         this.projects = projects;
     }
 
@@ -63,7 +63,7 @@ public class Client {
     @OneToMany(mappedBy = "client")
     private List<Payment> payment;
     @OneToMany(mappedBy = "client")
-    private List<Project> projects;
+    private List<ClientProject> projects;
 
     public List<Payment> getPayment() {
         return payment;

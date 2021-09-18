@@ -98,6 +98,8 @@ public class HomeController {
                             Model model, Principal principal){
         model.addAttribute("title","Bill");
         model.addAttribute("loginAvailable",true);
+        model.addAttribute("type",type);
+        model.addAttribute("id",id);
         Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
         System.out.println(client);
         Address address = client.getAddress();
