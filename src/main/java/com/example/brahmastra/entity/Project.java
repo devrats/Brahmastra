@@ -22,6 +22,15 @@ public class Project {
     private String type;
     private int discount;
     private float discountPercentage;
+    private String projectType;
+
+    public String getProjectType() {
+        return projectType;
+    }
+
+    public void setProjectType(String projectType) {
+        this.projectType = projectType;
+    }
 
     public Project(String name, String highlights, String type, float discountPercentage) {
         this.name = name;

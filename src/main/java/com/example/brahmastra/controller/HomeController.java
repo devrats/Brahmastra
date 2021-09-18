@@ -54,7 +54,7 @@ public class HomeController {
     @RequestMapping("/project")
     public String project(Model model, Principal principal){
         model.addAttribute("title","Projects");
-        List<Project> all = projectRepository.findAll();
+        List<Project> all = projectRepository.findAllByProjectType("project");
         model.addAttribute("projects",all);
         model.addAttribute("loginAvailable",false);
         if(!(principal==null)){
@@ -78,7 +78,7 @@ public class HomeController {
     @RequestMapping("/user/project")
     public String userProject(Model model){
         model.addAttribute("title","Projects");
-        List<Project> all = projectRepository.findAll();
+        List<Project> all = projectRepository.findAllByProjectType("project");
         model.addAttribute("projects",all);
         model.addAttribute("loginAvailable",true);
         return "projects";

@@ -67,6 +67,7 @@ public class ServiceController {
         project.setTax(tax);
         project.setDiscount(discount);
         project.setTotal(total);
+        project.setProjectType(type);
         Project save = projectRepository.save(project);
         model.addAttribute("id",save.getId());
         model.addAttribute("type",type);
@@ -87,14 +88,14 @@ public class ServiceController {
     public String pay(@RequestBody Map<String, Object> data, Principal principal) throws RazorpayException {
         var client = new RazorpayClient("rzp_test_4sgOUR0hFBHwtn", "buf7y58LORq7JKsFuExL7xXS");
         JSONObject object = new JSONObject();
-        int amount = Integer.parseInt(data.get("amount").toString());
+        float amount = Float.parseFloat(data.get("amount").toString());
         object.put("amount", amount * 100);
         object.put("currency", "INR");
         object.put("receipt", "txn_1234");
         Order order = client.Orders.create(object);
         Client clientHome = clientRepository.findClientByUsername(principal.getName());
         String type = (String) data.get("type");
-        int id = (int) data.get("id");
+        int id = Integer.parseInt((String) data.get("id"));
         if (type.equals("project") || type.equals("customProject")){
             Project projectById = projectRepository.findProjectById(id);
             ClientProject convert = ClientProject.convert(projectById);
