@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body onload="starting()">
+<body>
 <div th:replace="navbar::nav"></div>
 <div th:replace="homenav::nav1"></div>
-<section class="dashboard_banner" id="banneres">
+<section class="dashboard_banner-1" id="banneres">
     <div class="master-home-div">
         <div class="about-us">
-            <div class="content" style="text-align: center">
+            <div class="content slide-content" style="text-align: center">
                 <h1 class="about-us-heading">Our Story</h1>
                 Brahamastra Tech Pvt. Ltd. started in the summer of 2021. Founder members came up with the idea to features an almost a variety of models and designes of projects, using a broad spectrum of different color combinations and templates. We create the quality of products for startups and on-going businesses, to enhace their working to a new height.
                 <br>
@@ -21,10 +21,10 @@
             </div>
         </div>
         <div class="about-us">
-            <div class="pic-about-us">
+            <div class="" id="middlie-pic">
                 <img src="" class="actual-pic" th:src="@{/media/vision.jpg}">
             </div>
-            <div class="content" style="text-align: center">
+            <div class="content-1" style="text-align: center">
                 <h1 class="about-us-heading">Our Vision</h1>
                 Brahamastra Tech Pvt. Ltd. had a vision to spread happiness by turning an everyday essential projects and startups into a colorful design piece with a rigid standard of ultimate quality and creativity.
                 <br>
@@ -38,12 +38,28 @@
                 <br>
                 BRAHAMASTRA : PERFECT IN ITS CAUSE WHERE EVER IT IS
             </div>
-            <div class="pic-about-us">
+            <div class="" id="last-pic">
                 <img src="" class="actual-pic" th:src="@{/media/whyusjpg.jpg}">
             </div>
         </div>
     </div>
     <div th:replace="about::about"></div>
 </section>
+
+<script>
+    $( window ).scroll(function() {
+        if ($(this).scrollTop() > 725) {
+            console.log("lol")
+            $(".content").addClass("slide-content")
+            $("#last-pic").addClass("pic-about-us")
+        }
+        if ($(this).scrollTop() > 100) {
+            console.log("lol111")
+            $(".content-1").addClass("slide-content-1")
+            $("#middlie-pic").addClass("pic-about-us-1")
+        }
+
+    });
+</script>
 </body>
 </html>

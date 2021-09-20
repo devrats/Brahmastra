@@ -177,7 +177,6 @@ a {
 }
 
 .content{
-    animation: slider 1.2s ease-in;
     overflow: hidden;
     width: 45%;
     height: auto;
@@ -186,11 +185,33 @@ a {
     font-style: italic;
     font-weight: bold;
     font-size: 20px;
+    margin-left: 3px;
 }
+
+.content-1{
+    overflow: hidden;
+    width: 45%;
+    height: auto;
+    padding-top: 50px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 3px;
+}
+
+.slide-content{
+    animation: slider 1s ease-in;
+}
+
+.slide-content-1{
+    animation: slider-1 1s ease-in;
+}
+
+
 .actual-pic{
     height: 30rem;
     width: 80%;
-    /*margin-left: 10rem;*/
     border-radius: 50%;
 }
 
@@ -213,4 +234,30 @@ a {
 
 .pay-bot{
     width: 50%;
+}
+
+.pic-about-us{
+    animation: slider-1 1s ease-in;
+}
+
+.pic-about-us-1{
+    animation: slider 1s ease-in;
+}
+
+
+@keyframes slider-1 {
+    0%{
+        transform: translateX(500px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.dashboard_banner-1 {
+    padding-left: 8%;
+    padding-top: 50px;
+    padding-right: 2%;
+    width: 100%;
+    z-index: -1;
 }
