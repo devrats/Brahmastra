@@ -37,9 +37,9 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(Model model, Principal principal){
-//        Pricing project = new Pricing("Smart Parking","  •Very good\n  •Bht achha", 15000,"web",
-//                12999,10,15000,18);
-//        pricingRepository.save(project);
+        Pricing project = new Pricing("Smart Parking","  •Very good\n  •Bht achha", 15000,"web",
+                12999,10,15000,18);
+        pricingRepository.save(project);
         model.addAttribute("title","Brahmastra");
         model.addAttribute("loginAvailable",false);
         if(!(principal==null)){
@@ -103,7 +103,9 @@ public class HomeController {
         address.setClient(clientByUsername);
         clientByUsername.setAddress(address);
         clientByUsername.setName(client.getName());
-        addressRepository.save(address);
+        if(clientByUsername.getAddress()==null){
+            addressRepository.save(address);
+        }
         clientRepository.save(clientByUsername);
         if(type.equals("pricing")){
             Pricing pricingById = pricingRepository.findPricingById(id);

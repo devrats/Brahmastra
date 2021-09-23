@@ -19,14 +19,16 @@
             <br>
             <span class="item-head"> Highlights: </span> <br>
             <span class="project-type-detail">
-            <pre style="font-family: 'Times New Roman'; font-size: 1.3vw" th:text="${e.highlights}">
+            <pre style="font-family: 'Times New Roman'; font-size: 15px" th:text="${e.highlights}">
 
             </pre>
                 </span>
             <span class="item-head">Price: </span> <span class="item-amount" th:text="${e.discount}">
         </span> <span class="item-cut"> <del th:text="${e.price}"></del></span> <span class="item-discount" th:text="${e.discountPercentage}"></span>
             <span class="item-discount">%off</span>
-            <a href="#" th:href="@{'/user/checkout/project/' + ${e.id}}" style="float: right;" class="btn btn-outline-danger btn-warning bot">Buy</a>
+            <a href="#" th:href="@{'/user/checkout/project/' + ${e.id}}" style="float: right;">
+                <input type="button" class="btn btn-outline-danger button-buy btn-warning bot" value="Buy">
+            </a>
         </div>
     </div>
     <div th:replace="about::about"></div>

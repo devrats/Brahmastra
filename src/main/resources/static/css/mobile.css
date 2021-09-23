@@ -1,0 +1,266 @@
+.navbar-expand-lg .navbar-collapse .navbar-nav .nav-item .nav-link {
+    font-family: "Bookman Old Style";
+    font-style: italic;
+    font-size: 15px;
+}
+
+.navbar-expand-lg .navbar-brand {
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: cursive;
+    text-shadow: blue;
+}
+
+.navbar-home{
+    position: sticky;
+}
+
+body {
+    background-color: #e2e2e2;
+}
+
+.footer {
+    background-color: #e2e2e2;
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-size: 15px;
+    border-width: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.icon {
+    justify-content: center;
+    width: 15vh;
+    hight: 15vh;
+}
+
+.sidebar {
+    /*background-color: black;*/
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://png.pngtree.com/background/20210712/original/pngtree-color-technology-sense-creative-integrated-circuit-background-picture-image_1175268.jpg");
+    width: 13rem;
+    position: fixed;
+    /*top: 0px;*/
+    overscroll-behavior: contain;
+    display: block;
+    height: 100%;
+    transition-delay: 0.3s;
+    padding-top: 124px;
+    z-index: 2;
+}
+
+.sidebar a {
+    padding: 10px 25px;
+    display: block;
+    color: whitesmoke;
+    font-style: italic;
+    font-family: "Times New Roman";
+    font-size: 15px;
+    text-decoration: none;
+    width: 100%;
+}
+
+h4 {
+    font-family: cursive;
+    color: crimson;
+    font-size: 25px;
+    padding-top: 20px;
+    padding-bottom: 1px;
+}
+
+.sidebar a:hover {
+    background-color: burlywood;
+}
+
+.sidebar .present {
+    background-color: blueviolet;
+    color: whitesmoke;
+}
+
+.sidebar .cross {
+    position: absolute;
+    left: 90%;
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+.bar {
+    position: fixed;
+    font-size: 25px;
+    display: block;
+    padding-top: 128px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.dashboard_banner {
+    padding-left: 13rem;
+    padding-top: 50px;
+    padding-right: 2%;
+    width: 100%;
+    z-index: -1;
+}
+
+.second {
+    padding-top: 50px;
+}
+
+.bot {
+    color: black;
+    width: 9vw;
+    height: 2vw;
+    padding: 0;
+}
+
+.second-nav{
+    margin-top: 3.9rem;
+    z-index: 3;
+
+}
+
+.request {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: crimson;
+    font-family: 'Times New Roman';
+    font-size: 50px;
+}
+
+.verification-card{
+    top: 20vh;
+}
+
+.logo{
+    height: 3vw;
+    width: 12vw;
+}
+
+.project-name{
+    font-style: italic;
+    color: orange;
+    font-family: "Times New Roman";
+}
+
+.item-cut{
+    font-size: 12px;
+}
+
+.item-head{
+    color: darkviolet;
+    font-size: 22px;
+}
+
+.item-discount{
+    color: #ff105f;
+    font-size: 15px;
+}
+
+.project-type-detail{
+    color: brown;
+}
+
+.card{
+    width: 108%;
+}
+
+.button-buy{
+    width: 30vw;
+    padding: 0;
+    height: 25px;
+}
+
+.about-us{
+    display: inline-flex;
+}
+
+.content{
+    overflow: hidden;
+    width: 45%;
+    height: auto;
+    padding-top: 50px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 3px;
+}
+
+.content-1{
+    overflow: hidden;
+    width: 45%;
+    height: auto;
+    padding-top: 50px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 3px;
+}
+
+.slide-content{
+    animation: slider 1s ease-in;
+}
+
+.slide-content-1{
+    animation: slider-1 1s ease-in;
+}
+
+
+.actual-pic{
+    height: 30rem;
+    width: 80%;
+    border-radius: 50%;
+}
+
+.about-us{
+    margin-top: 100px;
+}
+
+.about-us-heading{
+    color: orange;
+}
+
+@keyframes slider {
+    0%{
+        transform: translateX(-500px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.pay-bot{
+    width: 50%;
+    height: 25px;
+}
+
+.pic-about-us{
+    animation: slider-1 1s ease-in;
+}
+
+.pic-about-us-1{
+    animation: slider 1s ease-in;
+}
+
+
+@keyframes slider-1 {
+    0%{
+        transform: translateX(500px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.dashboard_banner-1 {
+    padding-left: 8%;
+    padding-top: 50px;
+    padding-right: 2%;
+    width: 100%;
+    z-index: -1;
+}

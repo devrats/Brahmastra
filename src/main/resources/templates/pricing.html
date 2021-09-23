@@ -20,7 +20,7 @@
             <br>
             <span class="item-head"> Highlights: </span> <br>
             <span class="project-type-detail">
-            <pre style="font-family: 'Times New Roman'; font-size: 1.3vw" th:text="${e.highlights}">
+            <pre style="font-family: 'Times New Roman'; font-size: 15px" th:text="${e.highlights}">
 
             </pre>
                 </span>
@@ -29,10 +29,10 @@
                                                                                       th:text="${e.discountPercentage}"></span>
             <span class="item-discount">%off</span>
             <a href="#" th:href="@{'/user/checkout/pricing/' + ${e.id}}" style="float: right;"
-               class="btn btn-outline-danger btn-warning bot">Buy</a>
+               ><input type="button" class="btn btn-outline-danger button-buy btn-warning bot" value="Buy"></a>
         </div>
     </div>
-    <div class="card" style="margin-top: 100px">
+    <div class="card" style="margin-top: 110px">
         <div class="card-header">
             <h2 class="project-name"><span> Customized Product</span></h2>
         </div>
@@ -42,7 +42,7 @@
             <br>
             <span class="item-head"> Highlights: </span> <br>
             <span class="project-type-detail">
-            <pre style="font-family: 'Times New Roman'; font-size: 1.3vw">
+            <pre style="font-family: 'Times New Roman'; font-size: 15px">
   •Android app with core java and firebase implementation
   •Give an interface to user to find nearby parking and book the slot at that parking.
   •Give an interface to parking lot owners to manage their parking more effectively.

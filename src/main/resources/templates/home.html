@@ -47,18 +47,32 @@
 </section>
 
 <script>
+    console.log(isMobile)
+    if(isMobile){
+        $(".about-us").css("display","block")
+        $(".content").css("width","100%")
+        $(".content-1").css("width","100%")
+        $(".actual-pic").css("width","100%")
+        $(".content").css("padding-top","20px")
+        $(".content-1").css("padding-top","20px")
+        $(".dashboard_banner-1").css("padding-left","0px")
+        $(".actual-pic").css("padding-","100%")
+        $(".about-us-heading").css("font-size","50px")
+    }
     $( window ).scroll(function() {
-        if ($(this).scrollTop() > 725) {
-            console.log("lol")
-            $(".content").addClass("slide-content")
-            $("#last-pic").addClass("pic-about-us")
-        }
-        if ($(this).scrollTop() > 100) {
-            console.log("lol111")
-            $(".content-1").addClass("slide-content-1")
-            $("#middlie-pic").addClass("pic-about-us-1")
-        }
+        if(isMobile){
 
+        } else{
+
+            if ($(this).scrollTop() > 725) {
+                $(".content").addClass("slide-content")
+                $("#last-pic").addClass("pic-about-us")
+            }
+            if ($(this).scrollTop() > 100) {
+                $(".content-1").addClass("slide-content-1")
+                $("#middlie-pic").addClass("pic-about-us-1")
+            }
+        }
     });
 </script>
 </body>
