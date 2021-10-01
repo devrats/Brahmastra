@@ -98,12 +98,11 @@ public class HomeController {
         model.addAttribute("type",type);
         model.addAttribute("id",id);
         Client clientByUsername = clientRepository.findClientByUsername(principal.getName());
-        System.out.println(client);
         Address address = client.getAddress();
         address.setClient(clientByUsername);
-        clientByUsername.setAddress(address);
         clientByUsername.setName(client.getName());
         if(clientByUsername.getAddress()==null){
+            clientByUsername.setAddress(address);
             addressRepository.save(address);
         }
         clientRepository.save(clientByUsername);
